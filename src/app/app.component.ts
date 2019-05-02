@@ -4,6 +4,7 @@ interface Utente {
   nome: string;
   stelle: number;
   color: string;
+  email?: string;
   attivo?: boolean;
 }
 
@@ -26,7 +27,8 @@ export class AppComponent {
 
   utenti: Array<Utente> = [
     {
-      nome: "Giacomo",
+      nome: "Giacomo Alberini",
+      email: "giacomoalbe@gmail.com",
       stelle: 1,
       color: "green",
     },
@@ -47,6 +49,16 @@ export class AppComponent {
       stelle: 3,
       attivo: false,
       color: "pink",
+    },
+    {
+      nome: "GiuseppeSimone",
+      stelle: 1,
+      color: "lightblue",
+    },
+    {
+      nome: "GiuseppeSimone",
+      stelle: 1,
+      color: "lightblue",
     },
     {
       nome: "GiuseppeSimone",

@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+.flex-cont-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-cont-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-cont-col {
+  &.h-center {
+    align-items: center;
+  }
+
+  &.v-center {
+    justify-content: center;
+  }
+}
+
+.flex-cont-row {
+  &.v-center {
+    align-items: center;
+  }
+
+  &.h-center {
+    justify-content: center;
+  }
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

@@ -1,25 +1,22 @@
-<button (click)="changeClickMessage()">
-  {{ clickMessage }}
-</button>
-<button (click)="updateCountClick()">
-  Cliccato {{ clickCount + 10 }}
-</button>
-<button (click)="braseAll()">
-  Brasa tutto
-</button>
-<button (click)="braseAllForTrue()">
-  Brasa tutto (per davvero)
-</button>
-
-<br>
-<br>
-<br>
-<br>
-
-<div *ngFor="let utente of utenti">
-  <h4
-    [ngStyle]="style">
-    {{ utente.nome }}
-    <span>{{ utente.stelle }}</span>
-  </h4>
+<div class="flex-cont-row flex-wrap users-cont">
+  <div
+    *ngFor="let utente of utenti"
+    class="flex-cont-col h-center user-cont">
+    <div class="flex-cont-col">
+      <div class="user-avatar">
+      </div>
+    </div>
+    <div class="flex-cont-col h-center user-info">
+      <h2>Nome Cognome</h2>
+      <h3>nome.cognome@gmail.com</h3>
+    </div>
+    <div class="flex-cont-col h-center">
+      <div class="separator"></div>
+    </div>
+    <div class="flex-cont-row">
+      <div *ngFor="let star of [1,2,3,4,5]; let i = index">
+        <fa name="star-o"></fa>
+      </div>
+    </div>
+  </div>
 </div>
