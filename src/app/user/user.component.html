@@ -1,0 +1,48 @@
+<div
+  [ngStyle]="{
+    'border-color': utente.color
+  }"
+  class="flex-cont-col h-center user-cont">
+  <div class="flex-cont-col">
+    <div
+      [style.background]="utente.color"
+      class="user-avatar">
+    </div>
+  </div>
+  <div class="flex-cont-col h-center user-info">
+    <h2>{{ utente.nome }}</h2>
+    <h3>{{ utente.email ? utente.email : 'Nessun email inserita' }}</h3>
+  </div>
+  <div class="flex-cont-col h-center">
+    <div class="separator"></div>
+  </div>
+  <div class="flex-cont-row">
+    <!--
+    <div *ngFor="let star of [1,2,3,4,5]; let i = index">
+      <div
+        class="fa-star"
+        [ngClass]="{
+          'fas': utente.stelle >= star,
+          'far': utente.stelle < star
+        }">
+        NgClass
+      </div>
+      <div
+        class="fa-star"
+        [class.far]="utente.stelle < star"
+        [class.fas]="utente.stelle >= star"
+      >
+        Class
+      </div>
+      <fa [name]="utente.stelle >= star ? 'star' : 'star-o'"></fa>
+      <fa name="star" *ngIf="utente.stelle >= star"></fa>
+      <fa name="star-o" *ngIf="utente.stelle < star"></fa>
+    </div>
+    -->
+    <fa
+      [style.color]="utente.color"
+      [name]="utente.stelle >= star ? 'star' : 'star-o'"
+      *ngFor="let star of [1,2,3,4,5]">
+    </fa>
+  </div>
+</div>

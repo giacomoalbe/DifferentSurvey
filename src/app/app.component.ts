@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 
-interface Utente {
-  nome: string;
-  stelle: number;
-  color: string;
-  email?: string;
-  attivo?: boolean;
-}
+import { Utente } from './utente';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +13,13 @@ export class AppComponent {
   clickMessage: string = "Click me!";
   clickCount: number = 0;
   nomeUtente: string;
+
+  angularMin: number = 1;
+  angularMax: number = 5;
+
+  model: Utente = {
+    nome: "Alfonso",
+  };
 
   style = {
     color: 'red',
@@ -34,6 +35,7 @@ export class AppComponent {
     },
     {
       nome: "Luigi",
+      email: "luigi@mail.com",
       stelle: 4,
       attivo: true,
       color: "lime",
@@ -67,47 +69,11 @@ export class AppComponent {
     },
   ];
 
+  onSubmit() {
+    console.log("Nuovo utente: ", this.model);
+    this.utenti.push(this.model);
+  }
+
   constructor () {
-    console.log("Ciao, sono un componente!");
-
-    for (let i=0; i < this.utenti.length; i++) {
-      console.log(this.utenti[i]);
-    }
-
-    console.log("******************************");
-
-    let i = 0;
-
-    while (i < this.utenti.length) {
-      console.log(this.utenti[i]);
-
-      i++;
-    }
-
-    console.log("################################");
-
-    this.utenti.forEach((elem, index) => {
-      console.log(elem, index);
-    });
-  }
-
-  changeClickMessage() {
-    if (this.clickMessage === "Well done!") {
-      this.clickMessage = "Click me!";
-    } else {
-      this.clickMessage = "Well done!";
-    }
-  }
-
-  updateCountClick() {
-    this.clickCount++;
-  }
-
-  braseAll() {
-    this.clickCount = 0;
-  }
-
-  braseAllForTrue() {
-    this.clickCount = -10;
   }
 }

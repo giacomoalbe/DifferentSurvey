@@ -1,22 +1,45 @@
-<div class="flex-cont-row flex-wrap users-cont">
-  <div
-    *ngFor="let utente of utenti"
-    class="flex-cont-col h-center user-cont">
-    <div class="flex-cont-col">
-      <div class="user-avatar">
-      </div>
-    </div>
-    <div class="flex-cont-col h-center user-info">
-      <h2>Nome Cognome</h2>
-      <h3>nome.cognome@gmail.com</h3>
-    </div>
-    <div class="flex-cont-col h-center">
-      <div class="separator"></div>
-    </div>
+<div>
+  <h1>Crea un nuovo utente</h1>
+  <form #newUserForm="ngForm" (ngSubmit)="onSubmit()">
+    <span>Form Valida: {{ newUserForm.valid }}</span>
+    <br>
+    <span>Form Invalida: {{ newUserForm.invalid }}</span>
+    <br>
+    <pre>
+      {{ model | json }}
+    </pre>
     <div class="flex-cont-row">
-      <div *ngFor="let star of [1,2,3,4,5]; let i = index">
-        <fa name="star-o"></fa>
+      <div class="flex-cont-col flex-1">
+        <label for="nome">Nome</label>
+        <input
+          [(ngModel)]="model.nome"
+          name="nome"
+          type="text"
+          id="nome"
+          required>
+      </div>
+      <div class="flex-cont-col flex-1">
+        <label for="email">Email</label>
+        <input type="email" id="email">
+      </div>
+      <div class="flex-cont-col flex-1">
+        <label for="color">Color</label>
+        <input type="text" id="color">
+      </div>
+      <div class="flex-cont-col flex-1">
+        <label for="stelle">Stelle</label>
+        <input type="number" [min]="angularMin" [max]="angularMax" id="stelle">
+      </div>
+      <div class="flex-cont-col flex-1">
+        <input [disabled]="newUserForm.invalid" type="submit" value="Crea Utente">
       </div>
     </div>
-  </div>
+  </form>
+</div>
+<div class="flex-cont-row flex-wrap users-cont">
+  <user
+    [utente]="utente"
+    *ngFor="let utente of utenti"
+  >
+  </user>
 </div>
