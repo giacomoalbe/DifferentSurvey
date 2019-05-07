@@ -2,44 +2,44 @@
   <h1>Crea un nuovo utente</h1>
   <form #newUserForm="ngForm" (ngSubmit)="onSubmit()">
     <span>Form Valida: {{ newUserForm.valid }}</span>
-    <br>
+    <br />
     <span>Form Invalida: {{ newUserForm.invalid }}</span>
-    <br>
+    <br />
+    <span>Form status: {{ newUserForm.status }}</span>
     <pre>
       {{ model | json }}
     </pre>
     <div class="flex-cont-row">
       <div class="flex-cont-col flex-1">
         <label for="nome">Nome</label>
-        <input
-          [(ngModel)]="model.nome"
-          name="nome"
-          type="text"
-          id="nome"
-          required>
+        <input [(ngModel)]="model.nome" name="nome" type="text" id="nome" required />
       </div>
       <div class="flex-cont-col flex-1">
         <label for="email">Email</label>
-        <input type="email" id="email">
+        <input type="email" id="email" email [(ngModel)]="model.email" required name='email' />
       </div>
       <div class="flex-cont-col flex-1">
         <label for="color">Color</label>
-        <input type="text" id="color">
+        <input type="text" id="color" [(ngModel)]="model.color" required name="color" />
       </div>
       <div class="flex-cont-col flex-1">
         <label for="stelle">Stelle</label>
-        <input type="number" [min]="angularMin" [max]="angularMax" id="stelle">
+        <input type="number" [min]="angularMin" [max]="angularMax" id="stelle" [(ngModel)]="model.stelle" name='stelle' required />
       </div>
       <div class="flex-cont-col flex-1">
-        <input [disabled]="newUserForm.invalid" type="submit" value="Crea Utente">
+        <label>Iban</label>
+        <input type="text" name="iban" [(ngModel)]="model.iban" ibanValidator required/>
+      </div>
+      <div class="flex-cont-col flex-1">
+        <label>Codice Fiscale</label>
+        <input type="text" name="fiscal_code" [(ngModel)]="model.fiscalCode" fiscalCode required/>
+      </div>
+      <div class="flex-cont-col flex-1">
+        <input [disabled]="newUserForm.invalid" type="submit" value="Crea Utente" />
       </div>
     </div>
   </form>
 </div>
 <div class="flex-cont-row flex-wrap users-cont">
-  <user
-    [utente]="utente"
-    *ngFor="let utente of utenti"
-  >
-  </user>
+  <user [utente]="utente" *ngFor="let utente of utenti"> </user>
 </div>

@@ -9,10 +9,15 @@ import { AppComponent } from './app.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { UserComponent } from './user/user.component';
 
+import { IbanValidatorsDirective } from './directives/custom-validators/iban-validator.directive';
+import { FiscalCodeValidatorDirective } from './directives/custom-validators/fiscal_code-validator.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    IbanValidatorsDirective,
+    FiscalCodeValidatorDirective
   ],
   imports: [
     BrowserModule,

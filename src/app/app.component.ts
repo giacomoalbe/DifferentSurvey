@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Utente } from './utente';
+import { LoggerService } from './services/logger.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'DifferentSurvey';
   nome = "Giacomo";
   clickMessage: string = "Click me!";
@@ -70,10 +71,14 @@ export class AppComponent {
   ];
 
   onSubmit() {
-    console.log("Nuovo utente: ", this.model);
+    this.logger.log("Nuovo utente: " + this.model);
     this.utenti.push(this.model);
   }
 
-  constructor () {
+  constructor (private logger: LoggerService) {
+  }
+
+  ngOnInit() {
+
   }
 }
