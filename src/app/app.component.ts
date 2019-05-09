@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Utente } from './utente';
 import { LoggerService } from './services/logger.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import { LoggerService } from './services/logger.service';
 })
 export class AppComponent implements OnInit {
   title = 'DifferentSurvey';
-  nome = "Giacomo";
-  clickMessage: string = "Click me!";
+  nome = 'Giacomo';
+  clickMessage: string = 'Click me!';
   clickCount: number = 0;
   nomeUtente: string;
 
@@ -19,66 +20,63 @@ export class AppComponent implements OnInit {
   angularMax: number = 5;
 
   model: Utente = {
-    nome: "Alfonso",
+    nome: 'Alfonso'
   };
 
   style = {
     color: 'red',
     fontSize: 20
-  }
+  };
 
-  utenti: Array<Utente> = [
-    {
-      nome: "Giacomo Alberini",
-      email: "giacomoalbe@gmail.com",
-      stelle: 1,
-      color: "green",
-    },
-    {
-      nome: "Luigi",
-      email: "luigi@mail.com",
-      stelle: 4,
-      attivo: true,
-      color: "lime",
-    },
-    {
-      nome: "Leonardo",
-      stelle: 3,
-      attivo: true,
-      color: "purple",
-    },
-    {
-      nome: "Giacomo 2",
-      stelle: 3,
-      attivo: false,
-      color: "pink",
-    },
-    {
-      nome: "GiuseppeSimone",
-      stelle: 1,
-      color: "lightblue",
-    },
-    {
-      nome: "GiuseppeSimone",
-      stelle: 1,
-      color: "lightblue",
-    },
-    {
-      nome: "GiuseppeSimone",
-      stelle: 1,
-      color: "lightblue",
-    },
-  ];
+  utenti: Utente[];
 
   onSubmit() {
-    this.logger.log("Nuovo utente: " + this.model);
-    this.utenti.push(this.model);
+    this.logger.log('Nuovo utente: ' + this.model);
+    this.userService.addUser(this.model);
   }
 
-  constructor (private logger: LoggerService) {
-  }
+  constructor(private logger: LoggerService, private userService: UserService) {}
 
   ngOnInit() {
+    this.syncFunct();
+    this.asyncFunct();
+    this.listenToEditUserEvent();
+  }
 
+  listenToEditUserEvent() {
+    this.userService.edit_event$.subscribe((utente) => {
+      this.model = utente;
+    });
+  }
+
+  syncFunct() {
+    console.log(1);
+    console.log(2);
+    console.log(3);
+  }
+
+  asyncFunct() {
+    console.log(11);
+    setTimeout(() => {
+      console.log(22);
+    }, 3000);
+    console.log(33);
+
+    this.promiseFunction()
+      .then((res) => {})
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  promiseFunction(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (true) {
+          reject(null);
+        }
+        resolve(null);
+      }, 3000);
+    });
   }
 }

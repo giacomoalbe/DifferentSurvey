@@ -20,6 +20,10 @@ export class IbanValidatorsDirective implements Validator {
 export function IbanValidate() : ValidatorFn {
     return(control: AbstractControl) : ValidationErrors | null => {
       let valueToCheck = control.value as string;
+
+      if(!valueToCheck) {
+        return null;
+      }
       return valueToCheck.length === 7 ? null : { key: 'string'}
     }
 }

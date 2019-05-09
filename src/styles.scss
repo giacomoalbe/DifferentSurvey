@@ -36,10 +36,10 @@
   flex-wrap: wrap;
 }
 
-.ng-invalid:not(.ng-pristine) {
+input.ng-invalid:not(.ng-pristine) {
   border: 1px solid red;
 }
 
-.ng-valid:not(.ng-pristine) {
+input.ng-valid:not(.ng-pristine) {
   border: 1px solid green
 }

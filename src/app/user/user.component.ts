@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Utente } from '../utente';
 import { LoggerService } from '../services/logger.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'user',
@@ -12,8 +13,13 @@ export class UserComponent implements OnInit {
 
   @Input() utente: Utente;
 
-  constructor(private logger: LoggerService) {
+  constructor(private logger: LoggerService, private userService: UserService) {
+
   }
 
   ngOnInit() {}
+
+  editUser() {
+    this.userService.edit_event.next(this.utente);
+  }
 }

@@ -16,7 +16,7 @@
       </div>
       <div class="flex-cont-col flex-1">
         <label for="email">Email</label>
-        <input type="email" id="email" email [(ngModel)]="model.email" required name='email' />
+        <input type="email" id="email" email [(ngModel)]="model.email" required name='email' emailExist />
       </div>
       <div class="flex-cont-col flex-1">
         <label for="color">Color</label>
@@ -41,5 +41,5 @@
   </form>
 </div>
 <div class="flex-cont-row flex-wrap users-cont">
-  <user [utente]="utente" *ngFor="let utente of utenti"> </user>
+  <user [utente]="utente" *ngFor="let utente of userService.getObservablesUsers() | async "> </user>
 </div>

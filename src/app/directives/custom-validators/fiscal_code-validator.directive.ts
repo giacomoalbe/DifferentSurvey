@@ -19,7 +19,11 @@ export class FiscalCodeValidatorDirective implements Validator {
 }
 
 export const fiscalCodeValidation: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  let value = control.value as string;
-  let validationCondition = value.length == 10;
-  return validationCondition ? null : { key: 'string' };
+  return (control: AbstractControl) => {
+    let value = control.value as string;
+    if (!value) {
+      return null;
+    }
+    return value.length > 2 ? { key: true } : null;
+  };
 };
