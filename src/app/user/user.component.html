@@ -44,6 +44,10 @@
       [name]="utente.stelle >= star ? 'star' : 'star-o'"
       *ngFor="let star of [1,2,3,4,5]">
     </fa>
-    <button (click)='editUser()'>Modifca</button>
+    <button
+      [disabled]='!editable'
+      (click)='editUser()'>
+      Modifca
+    </button>
   </div>
 </div>

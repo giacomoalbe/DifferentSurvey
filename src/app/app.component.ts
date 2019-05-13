@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Utente } from './utente';
 import { LoggerService } from './services/logger.service';
@@ -15,68 +16,50 @@ export class AppComponent implements OnInit {
   clickMessage: string = 'Click me!';
   clickCount: number = 0;
   nomeUtente: string;
+  isEdit: boolean = false;
+  saveUserText: string = "Crea";
 
   angularMin: number = 1;
   angularMax: number = 5;
 
-  model: Utente = {
-    nome: 'Alfonso'
-  };
-
-  style = {
-    color: 'red',
-    fontSize: 20
-  };
+  model: Utente = {};
 
   utenti: Utente[];
 
-  onSubmit() {
-    this.logger.log('Nuovo utente: ' + this.model);
-    this.userService.addUser(this.model);
-  }
-
-  constructor(private logger: LoggerService, private userService: UserService) {}
+  constructor(
+    private logger: LoggerService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    this.syncFunct();
-    this.asyncFunct();
     this.listenToEditUserEvent();
   }
 
+  onSubmit(form: NgForm) {
+    if (this.isEdit) {
+      this.userService.save(this.model);
+
+      this.cancelEdit();
+    } else {
+      this.userService.add(this.model);
+    }
+
+    form.reset();
+  }
+
   listenToEditUserEvent() {
-    this.userService.edit_event$.subscribe((utente) => {
-      this.model = utente;
+    this.userService.edit_event.subscribe((utente) => {
+      this.isEdit = true;
+      this.saveUserText = "Salva";
+
+      this.model = JSON.parse(JSON.stringify(utente));
     });
   }
 
-  syncFunct() {
-    console.log(1);
-    console.log(2);
-    console.log(3);
-  }
+  cancelEdit() {
+    this.isEdit = false;
+    this.model = {};
 
-  asyncFunct() {
-    console.log(11);
-    setTimeout(() => {
-      console.log(22);
-    }, 3000);
-    console.log(33);
-
-    this.promiseFunction()
-      .then((res) => {})
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  promiseFunction(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (true) {
-          reject(null);
-        }
-        resolve(null);
-      }, 3000);
-    });
+    this.userService.cancel_edit_event.next()
   }
 }

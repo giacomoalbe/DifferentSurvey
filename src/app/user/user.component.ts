@@ -10,16 +10,28 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
   @Input() utente: Utente;
 
-  constructor(private logger: LoggerService, private userService: UserService) {
+  editable = true;
 
+  constructor(
+    private logger: LoggerService,
+    private userService: UserService
+  ) {
+    this.userService.edit_event.subscribe((_utente) => {
+      if (_utente.id !== this.utente.id) {
+        this.editable = false;
+      }
+    });
+
+    this.userService.cancel_edit_event.subscribe(() => {
+      this.editable = true;
+    });
   }
 
   ngOnInit() {}
 
   editUser() {
-    this.userService.edit_event.next(this.utente);
+    this.userService.edit(this.utente);
   }
 }

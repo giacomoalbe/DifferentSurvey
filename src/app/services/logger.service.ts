@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoggerService {
   private mainMsg: string;
-  
+
   constructor() {}
 
   log(msg: string) {

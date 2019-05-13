@@ -1,5 +1,6 @@
 export interface Utente {
-  nome: string;
+  id?: number;
+  nome?: string;
   email?: string;
   stelle?: number;
   color?: string;
