@@ -13,14 +13,14 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   title = 'DifferentSurvey';
   nome = 'Giacomo';
-  clickMessage: string = 'Click me!';
-  clickCount: number = 0;
+  clickMessage = 'Click me!';
+  clickCount = 0;
   nomeUtente: string;
-  isEdit: boolean = false;
-  saveUserText: string = "Crea";
+  isEdit = false;
+  saveUserText = 'Crea';
 
-  angularMin: number = 1;
-  angularMax: number = 5;
+  angularMin = 1;
+  angularMax = 5;
 
   model: Utente = {};
 
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   listenToEditUserEvent() {
     this.userService.edit_event.subscribe((utente) => {
       this.isEdit = true;
-      this.saveUserText = "Salva";
+      this.saveUserText = 'Salva';
 
       this.model = JSON.parse(JSON.stringify(utente));
     });
@@ -60,6 +60,6 @@ export class AppComponent implements OnInit {
     this.isEdit = false;
     this.model = {};
 
-    this.userService.cancel_edit_event.next()
+    this.userService.cancel_edit_event.next();
   }
 }
