@@ -1,8 +1,9 @@
 export interface Utente {
   id?: number;
   nome?: string;
+  cognome?: string;
   email?: string;
-  stelle?: number;
+  rating?: number;
   color?: string;
-  attivo?: boolean;
+  active?: boolean;
 }

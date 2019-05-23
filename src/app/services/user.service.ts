@@ -9,59 +9,16 @@ export class UserService {
   private utenti: Array<Utente> = [
     {
       id: 1,
-      nome: 'Giacomo Alberini',
+      nome: 'Giacomo',
+      cognome: 'Alberini',
       email: 'giacomoalbe@gmail.com',
-      stelle: 1,
-      color: 'green'
-    },
-    {
-      id: 2,
-      nome: 'Luigi',
-      email: 'luigi@mail.com',
-      stelle: 4,
-      attivo: true,
-      color: 'lime'
-    },
-    {
-      id: 3,
-      nome: 'Leonardo',
-      stelle: 3,
-      attivo: true,
-      color: 'purple'
-    },
-    {
-      id: 4,
-      nome: 'Giacomo 2',
-      stelle: 3,
-      attivo: false,
-      color: 'pink'
-    },
-    {
-      id: 5,
-      nome: 'GiuseppeSimone',
-      stelle: 1,
-      color: 'lightblue'
-    },
-    {
-      id: 6,
-      nome: 'GiuseppeSimone',
-      stelle: 1,
-      color: 'lightblue'
-    },
-    {
-      id: 7,
-      nome: 'GiuseppeSimone',
-      stelle: 1,
-      color: 'lightblue'
+      rating: 5
     }
   ];
 
   private nextId: number;
 
   observablesUser: BehaviorSubject<Utente[]> = new BehaviorSubject([...this.utenti]);
-
-  edit_event: Subject<Utente> = new Subject();
-  cancel_edit_event: Subject<undefined> = new Subject();
 
   constructor() {
     this.nextId = this.utenti.reduce((prev, next) => {
@@ -75,6 +32,14 @@ export class UserService {
 
   add(utente: Utente) {
     this.utenti.push(utente);
+
+    this.observablesUser.next(this.utenti);
+  }
+
+  delete(utente: Utente) {
+    let userIndex = this.utenti.indexOf(utente);
+
+    this.utenti.splice(userIndex, 1);
 
     this.observablesUser.next(this.utenti);
   }

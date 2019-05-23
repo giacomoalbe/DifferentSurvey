@@ -34,32 +34,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.listenToEditUserEvent();
   }
-
-  onSubmit(form: NgForm) {
-    if (this.isEdit) {
-      this.userService.save(this.model);
-
-      this.cancelEdit();
-    } else {
-      this.userService.add(this.model);
-    }
-
-    form.reset();
-  }
-
-  listenToEditUserEvent() {
-    this.userService.edit_event.subscribe((utente) => {
-      this.isEdit = true;
-      this.saveUserText = 'Salva';
-
-      this.model = JSON.parse(JSON.stringify(utente));
-    });
-  }
-
-  cancelEdit() {
-    this.isEdit = false;
-    this.model = {};
-
-    this.userService.cancel_edit_event.next();
-  }
 }

@@ -12,13 +12,19 @@ import { ValidatorModule } from './directives/validator.module';
 import { ProvaComponent } from './components/prova/prova.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ProvaComponent,
     UserListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UserViewComponent,
+    UserEditComponent,
+    RouterOutletComponent
   ],
   imports: [
     BrowserModule,
