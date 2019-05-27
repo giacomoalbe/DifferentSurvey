@@ -18,15 +18,6 @@ export class UserComponent implements OnInit {
     private logger: LoggerService,
     private userService: UserService
   ) {
-    this.userService.edit_event.subscribe((_utente) => {
-      if (_utente.id !== this.utente.id) {
-        this.editable = false;
-      }
-    });
-
-    this.userService.cancel_edit_event.subscribe(() => {
-      this.editable = true;
-    });
   }
 
   ngOnInit() {}
