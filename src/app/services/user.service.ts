@@ -6,17 +6,6 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  /*
-  private utenti: Array<Utente> = [
-    {
-      id: 1,
-      nome: 'Giacomo',
-      cognome: 'Alberini',
-      email: 'giacomoalbe@gmail.com',
-      rating: 5
-    }
-  ];
-   */
   private utenti: Utente[] = [];
   private nextId: number;
 

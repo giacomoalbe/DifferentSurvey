@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +16,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
+import { SearchMovieComponent } from './components/search-movie/search-movie.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +27,17 @@ import { RouterOutletComponent } from './components/router-outlet/router-outlet.
     NotFoundComponent,
     UserViewComponent,
     UserEditComponent,
-    RouterOutletComponent
+    RouterOutletComponent,
+    SearchMovieComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
     FormsModule,
-    ValidatorModule
+    ValidatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

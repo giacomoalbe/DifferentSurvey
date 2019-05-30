@@ -1,0 +1,51 @@
+<div class="px-3">
+  <h1>
+    Ricerca film
+  </h1>
+  <div class="form-group d-flex align-items-center">
+    <input
+      [(ngModel)]="ricerca"
+      name="ricerca"
+      placeholder="Inserisci il film che vuoi cercare..."
+      type="text"
+      class="form-control mr-2">
+    <div class="d-flex align-items-center">
+      <button
+        [disabled]="ricerca.length == 0"
+        (click)="ricercaFilm()"
+        class="btn btn-primary mr-2">
+        Cerca
+      </button>
+      <button
+        [disabled]="ricerca.length == 0"
+        (click)="svuotaFiltro()"
+        class="btn btn-danger">
+        Svuota
+      </button>
+    </div>
+  </div>
+  <div *ngIf="!isLoading">
+    <div *ngIf="error" class="alert alert-danger">
+      Errore: {{ error }}
+    </div>
+    <p *ngIf="movies.length == 0">
+      Non ci sono movies :(
+    </p>
+    <div *ngFor="let movie of movies">
+      <img
+        style="width: 90px; height: 160px"
+        [src]="movie.Poster"
+        [alt]="movie.Title">
+      {{ movie.Title }}
+      <button
+        (click)="movieDetails(movie)"
+        class="btn btn-primary">
+        Dettaglio
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isLoading">
+    <i class="fa fa-spin fa-spinner mr-3"></i>
+    Caricamento...
+  </div>
+</div>
