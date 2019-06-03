@@ -7,9 +7,31 @@
   </div>
 </div>
 <div
+  class="loader flex-cont-col"
   *ngIf="!isLoading">
-  <a (click)="goBack()">Indietro</a>
-  <div class="title">
-    {{ movie.Title }}
+  <div
+    class="title d-flex align-items-center justify-content-center">
+    <div>
+      <i class="fa fa-chevron-left mr-2"></i>
+      <a (click)="goBack()">Indietro</a>
+    </div>
+    <h1 class="m-0 mx-auto">
+      {{ movie.Title }}
+    </h1>
+    <div style="opacity: 0">
+      <i class="fa fa-chevron-left mr-2"></i>
+      <a>Indietro</a>
+    </div>
+  </div>
+  <div class="d-flex flex-1">
+    <div
+      [ngStyle]="{
+        'background-image': 'url(' + movie.Poster + ')'
+      }"
+      class="poster flex-1">
+    </div>
+    <div class="info flex-2">
+      Info
+    </div>
   </div>
 </div>
