@@ -13,6 +13,8 @@ export class MovieService {
     private http: HttpClient
   ) { }
 
+  savedSearch = "";
+
   search(ricerca: string) {
     return new Promise((resolve, reject) => {
       let params = new HttpParams()
@@ -48,5 +50,13 @@ export class MovieService {
           reject("Errore generico");
         });
     });
+  }
+
+  saveSearch(ricerca) {
+    this.savedSearch = ricerca;
+  }
+
+  getSavedSearch() {
+    return this.savedSearch;
   }
 }

@@ -1,4 +1,15 @@
-<div>
-  MovieId: {{ movieId }}
-  <pre>{{ movie | json }}</pre>
+<div
+  *ngIf="isLoading"
+  class="loader v-center h-center flex-cont-row">
+  <div>
+    <i class="fa fa-spinner fa-spin mr-2"></i>
+    Caricamento...
+  </div>
+</div>
+<div
+  *ngIf="!isLoading">
+  <a (click)="goBack()">Indietro</a>
+  <div class="title">
+    {{ movie.Title }}
+  </div>
 </div>

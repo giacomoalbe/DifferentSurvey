@@ -20,6 +20,12 @@ export class SearchMovieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("Movie Search init");
+    this.ricerca = this.movieService.getSavedSearch();
+
+    if (this.ricerca != "") {
+      this.ricercaFilm();
+    }
   }
 
   ricercaFilm() {
@@ -39,6 +45,9 @@ export class SearchMovieComponent implements OnInit {
   }
 
   movieDetails(movie) {
+    // Save ricerca in localStorage
+    this.movieService.saveSearch(this.ricerca);
+
     this.router.navigate(['movies/view/', movie.imdbID]);
   }
 

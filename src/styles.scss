@@ -46,3 +46,8 @@ input.ng-invalid:not(.ng-pristine) {
 input.ng-valid:not(.ng-pristine) {
   border: 1px solid green
 }
+
+.loader {
+  height: 100vh;
+  width: 100%;
+}
