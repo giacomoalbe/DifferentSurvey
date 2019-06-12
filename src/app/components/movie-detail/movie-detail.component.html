@@ -23,15 +23,25 @@
       <a>Indietro</a>
     </div>
   </div>
-  <div class="d-flex flex-1">
+  <div class="flex-cont-row flex-1">
     <div
       [ngStyle]="{
         'background-image': 'url(' + movie.Poster + ')'
       }"
       class="poster flex-1">
     </div>
-    <div class="info flex-2">
-      Info
+    <div class="info flex-2 flex-cont-col">
+      <div
+        *ngFor="let field of movieFields"
+        [ngClass]="field.cssClass"
+        class="flex-1 text-bold flex-cont-col">
+        <span
+          [style.color]="field.color"
+          class="font-weight-bold">
+          {{ field.text }}
+        </span>
+        {{ movie[field.property] }}
+      </div>
     </div>
   </div>
 </div>

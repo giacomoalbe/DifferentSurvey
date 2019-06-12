@@ -14,6 +14,33 @@ export class MovieDetailComponent implements OnInit {
   isLoading: boolean;
   error: string;
 
+  movieFields = [
+    {
+      cssClass: 'font-style-italic',
+      color: 'orange',
+      property: 'Awards',
+      text: 'Riconoscimenti'
+    },
+    {
+      cssClass: '',
+      color: 'red',
+      property: 'Director',
+      text: 'Reggista'
+    },
+    {
+      cssClass: '',
+      color: 'green',
+      property: 'Genre',
+      text: 'Genere'
+    },
+    {
+      cssClass: '',
+      color: 'skyblue',
+      property: 'Plot',
+      text: 'Trama'
+    },
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
