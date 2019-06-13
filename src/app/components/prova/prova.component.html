@@ -4,86 +4,110 @@
 
 <!-- <form #userForm="ngForm" (ngSubmit)="submitForm(userForm)">
   <div class="form-group">
-    <label for="name">
-      Nome:
-    </label>
-    <input
-      [(ngModel)]="name"
-      class="form-control"
-      required
-      id="name"
-      type="text"
-      name="name"
-      placeholder="Inserisci il nome!">
+  <label for="name">
+  Nome:
+  </label>
+  <input
+  [(ngModel)]="name"
+  class="form-control"
+  required
+  id="name"
+  type="text"
+  name="name"
+  placeholder="Inserisci il nome!">
   </div>
   <div class="form-group">
-    <label for="surname">
-      Cognome:
-    </label>
-    <input
-      [(ngModel)]="surname"
-      class="form-control"
-      required
-      id="surname"
-      type="text"
-      name="surname"
-      placeholder="Inserisci il cognome!">
+  <label for="surname">
+  Cognome:
+  </label>
+  <input
+  [(ngModel)]="surname"
+  class="form-control"
+  required
+  id="surname"
+  type="text"
+  name="surname"
+  placeholder="Inserisci il cognome!">
   </div>
   Status: {{ userForm.status }}
   <div class="form-group">
-    <input
-      [disabled]="userForm.invalid"
-      class="btn btn-primary"
-      type="submit"
-      value="Invia!">
+  <input
+  [disabled]="userForm.invalid"
+  class="btn btn-primary"
+  type="submit"
+  value="Invia!">
   </div>
-</form> -->
+  </form> -->
 
-<form [formGroup]="userForm" (ngSubmit)="submitForm()">
-  <div class="form-group">
-    <label for="name">
-      Nome:
-    </label>
-    <input
-      class="form-control"
-      formControlName="name"
-      id="name"
-      type="text"
-      placeholder="Inserisci il nome!">
-    <span *ngIf="
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="name">
+        Nome:
+      </label>
+      <input
+        class="form-control"
+        formControlName="name"
+        id="name"
+        type="text"
+        placeholder="Inserisci il nome!">
+      <span *ngIf="
       userForm.controls.name.errors?.required &&
       !userForm.controls.name.pristine">
-      Ehi! Devi inserire il nome, fdp!
-    </span>
-  </div>
-  <div class="form-group">
-    <label for="surname">
-      Cognome:
-    </label>
-    <input
-      class="form-control"
-      formControlName="surname"
-      id="surname"
-      type="text"
-      placeholder="Inserisci il cognome!">
-    <span *ngIf="
+        Ehi! Devi inserire il nome, fdp!
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="surname">
+        Cognome:
+      </label>
+      <input
+        class="form-control"
+        formControlName="surname"
+        id="surname"
+        type="text"
+        placeholder="Inserisci il cognome!">
+      <span *ngIf="
       userForm.controls.surname.errors?.notEnoughChar &&
       !userForm.controls.surname.pristine">
-      Ehi! Devi mettere almeno
-      {{ userForm.controls.surname.errors.notEnoughChar.count }}
-      caratteri
-      {{ userForm.controls.surname.errors.notEnoughChar.char }}, strnx!
-      Ne hai messi solamente
-      {{ userForm.controls.surname.errors.notEnoughChar.actual }}, m*******e!
-    </span>
-
-  </div>
-  <div class="form-group">
-    <input
-      [disabled]="userForm.invalid"
-      class="btn btn-primary"
-      type="submit"
-      value="Invia!">
-  </div>
-  Form Valid: {{ userForm.valid }}
-</form>
+        Ehi! Devi mettere almeno
+        {{ userForm.controls.surname.errors.notEnoughChar.count }}
+        caratteri
+        {{ userForm.controls.surname.errors.notEnoughChar.char }}, strnx!
+        Ne hai messi solamente
+        {{ userForm.controls.surname.errors.notEnoughChar.actual }}, m*******e!
+      </span>
+      <span>
+        {{ [1,2,3,4] | length:'ciao,ciao' }}
+      </span>
+    </div>
+    <div class="form-group">
+      <star-rating
+        formControlName="rating">
+      </star-rating>
+      <span>
+        {{ userForm.controls.rating.errors | json }}
+      </span>
+    </div>
+    <div class="form-group">
+      <counter
+        formControlName="counter">
+      </counter>
+      <span>
+        {{ userForm.controls.counter.errors | json }}
+      </span>
+    </div>
+    <div class="form-group">
+      <counter2 formControlName="counter2">
+      </counter2>
+      {{ userForm.controls.counter2.value }}
+    </div>
+    <div class="form-group">
+      <input
+        [disabled]="userForm.invalid"
+        class="btn btn-primary"
+        type="submit"
+        value="Invia!">
+    </div>
+    Rating: {{ userForm.controls.rating.value }}
+    Form Valid: {{ userForm.valid }}
+  </form>

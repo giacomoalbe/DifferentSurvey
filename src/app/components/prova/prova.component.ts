@@ -27,8 +27,15 @@ export class ProvaComponent implements OnInit {
   userForm = this.fb.group({
     name: ['', [Validators.required]],
     surname: ['',
-      [Validators.required, minCharLengthValidator("z", 3435)]
-    ]
+      [Validators.required, minCharLengthValidator("z", 3)]
+    ],
+    rating: [1,
+      [Validators.min(4)]
+    ],
+    counter: [5,
+      [Validators.min(0), Validators.max(10)]
+    ],
+    counter2: [0]
   });
 
   ngOnInit() {
@@ -40,5 +47,9 @@ export class ProvaComponent implements OnInit {
     } else {
       console.log("Nummefreghi!");
     }
+  }
+
+  resetRating() {
+    this.userForm.controls.rating.setValue(0);
   }
 }

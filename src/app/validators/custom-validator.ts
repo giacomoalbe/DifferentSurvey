@@ -1,6 +1,6 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export function minCharLengthValidator(c: char, count: number) : ValidatorFn {
+export function minCharLengthValidator(c: string, count: number) : ValidatorFn {
   return (control: AbstractControl) : { [key: string] : any } => {
     const charLength = control.value.split(c).length - 1;
     const valid = charLength >= count;
@@ -16,6 +16,5 @@ export function minCharLengthValidator(c: char, count: number) : ValidatorFn {
         }
       }
     }
-
   };
 }

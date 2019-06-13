@@ -18,6 +18,10 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { LengthPipe } from './pipes/length.pipe';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { Counter2Component } from './components/counter2/counter2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,11 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     UserEditComponent,
     RouterOutletComponent,
     SearchMovieComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    LengthPipe,
+    StarRatingComponent,
+    CounterComponent,
+    Counter2Component,
   ],
   imports: [
     BrowserModule,

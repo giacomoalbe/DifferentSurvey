@@ -1,0 +1,14 @@
+<div class="flex-cont-row v-center">
+  <div class="flex-cont-row">
+    <i
+      *ngFor="let i of [1,2,3,4,5]"
+      [class.fa-star-o]="rating < i"
+      [class.fa-star]="rating >= i"
+      (click)="setValue(i)"
+      class="fa mr-2">
+    </i>
+  </div>
+  <span>
+    {{ rating }} / 5
+  </span>
+</div>
