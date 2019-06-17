@@ -22,6 +22,7 @@ import { LengthPipe } from './pipes/length.pipe';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { Counter2Component } from './components/counter2/counter2.component';
+import { FlagComponent } from './components/flag/flag.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { Counter2Component } from './components/counter2/counter2.component';
     StarRatingComponent,
     CounterComponent,
     Counter2Component,
+    FlagComponent,
   ],
   imports: [
     BrowserModule,

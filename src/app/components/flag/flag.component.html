@@ -1,0 +1,9 @@
+<div class="flex-cont-row v-center">
+  <div
+    [class.selected]="selectedFlag == flag"
+    (click)="selectFlag(flag)"
+    class="mr-2" *ngFor="let flag of flags">
+    {{ flag }}
+  </div>
+</div>
+{{ selectedFlag }}

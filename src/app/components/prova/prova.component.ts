@@ -35,7 +35,8 @@ export class ProvaComponent implements OnInit {
     counter: [5,
       [Validators.min(0), Validators.max(10)]
     ],
-    counter2: [0]
+    counter2: [0],
+    flag: ['ITA']
   });
 
   ngOnInit() {
